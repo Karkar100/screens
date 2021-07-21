@@ -10,13 +10,17 @@ import UIKit
 @main
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
-
+    let window = UIWindow(frame: UIScreen.main.bounds)
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
+        window.rootViewController = RootViewController()
+        window.makeKeyAndVisible()
         // Override point for customization after application launch.
         return true
     }
 
+    
+    
     // MARK: UISceneSession Lifecycle
 
     func application(_ application: UIApplication, configurationForConnecting connectingSceneSession: UISceneSession, options: UIScene.ConnectionOptions) -> UISceneConfiguration {
@@ -34,3 +38,13 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
 }
 
+
+
+extension AppDelegate {
+   static var shared: AppDelegate {
+      return UIApplication.shared.delegate as! AppDelegate
+   }
+var rootViewController: RootViewController {
+      return window.rootViewController as! RootViewController
+   }
+}
